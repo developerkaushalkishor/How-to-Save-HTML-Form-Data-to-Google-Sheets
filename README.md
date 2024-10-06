@@ -63,15 +63,18 @@ Now that you have the deployment URL, create an HTML form that sends data to the
            const scriptURL = 'YOUR_GOOGLE_APP_SCRIPT_DEPLOYMENT_URL';
            const form = document.getElementById('google-sheet-form');
 
-           form.addEventListener('submit', (e) => {
-               e.preventDefault();
-               fetch(scriptURL, {
-                   method: 'POST',
-                   body: new FormData(form)
-               })
-               .then(response => alert('Success! Your submission has been saved.'))
-               .catch(error => console.error('Error!', error.message));
-           });
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+                .then(response => {
+                    alert('Success! Your submission has been saved.');
+                    form.reset();
+                })
+                .catch(error => console.error('Error!', error.message));
+        });
        </script>
    </body>
    </html>
