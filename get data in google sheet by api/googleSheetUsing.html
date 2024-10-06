@@ -31,7 +31,10 @@
                 method: 'POST',
                 body: new FormData(form)
             })
-                .then(response => alert('Success! Your submission has been saved.'))
+                .then(response => {
+                    alert('Success! Your submission has been saved.');
+                    form.reset();
+                })
                 .catch(error => console.error('Error!', error.message));
         });
     </script>
